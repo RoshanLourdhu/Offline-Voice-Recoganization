@@ -112,3 +112,99 @@ sleep 5
 3. Start Voice Keyboard App ---
 echo "Starting Voice Keyboard App..."
 python3 /home/roshan/voicekeyboard/voice_keyboard_app.py > /tmp/voicekeyboard.log 2>&1 &
+
+[Desktop Entry]
+
+Type=Application
+Exec=/home/roshan/voicekeyboard/start_voicekeyboard.sh
+
+Hidden=false
+NoDisplay=false
+
+X-GNOME-Autostart-enabled=true
+Name=Voice Keyboard
+
+Comment=Launch the offline voice-enabled keyboard with grammar correction
+Icon=/home/roshan/voicekeyboard/icons/mic_on.png
+# Vosk Models Directory
+
+This folder is a placeholder for Vosk speech recognition models used by the voice keyboard system.
+
+---
+
+Do Not Upload Full Models Here
+
+Vosk models are large (typically 100–500 MB) and should *not* be committed to this repository.  
+Instead, users should download them manually and place them in this folder.
+
+
+Recommended Model
+
+We recommend the *English model* vosk-model-en-us-0.22 for best accuracy and compatibility.
+
+Voice Keyboard Setup Instructions
+
+Welcome to the Voice Keyboard system — a native, intelligent input tool powered by voice recognition, grammar correction, and seamless app integration.
+
+This guide walks you through installing dependencies, downloading required models, launching the app, and enabling autostart.
+
+Folder Structure Overview
+
+Vosk models are large and not included in this repo.
+
+Download the recommended English model:
+
+vosk-model-en-us-0.22
+
+Extract it into:
+
+bash
+voicekeyboard/models/vosk-model-en-us-0.22/
+
+Step 3: Download LanguageTool
+Download and extract:
+
+LanguageTool 6.3
+
+Place languagetool-server.jar in:
+
+bash
+/home/yourusername/languagetool/
+
+Step 4: Launch the App
+Run the unified launcher script:
+
+bash
+bash ~/voicekeyboard/start_voicekeyboard.sh
+This will:
+
+Start the grammar server (if available)
+
+Launch the PyQt voice keyboard app
+
+Step 5: Enable Autostart (Optional)
+Create a .desktop file in ~/.config/autostart/:
+
+ini
+[Desktop Entry]
+Type=Application
+Exec=/home/yourusername/voicekeyboard/start_voicekeyboard.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=VoiceKeyboard
+Comment=Launches voice keyboard and grammar server
+Make it executable:
+
+bash
+chmod +x ~/.config/autostart/voicekeyboard.desktop
+🧪 Step 6: Test the Flow
+Click the tray icon to open the widget
+
+Speak into the mic → text appears
+
+Toggle grammar correction
+
+Click "Insert" to inject text into active app
+
+Click "Keyboard" to open onboard keyboard
